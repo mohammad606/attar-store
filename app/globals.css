@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+html,body{
+  min-height: 100vh;
+
+}
+body {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", serif !important;
+  background-color: #0c0825;
+}
+
+
+.sc-hLBatu [data-tag="allowRowEvents"]{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
