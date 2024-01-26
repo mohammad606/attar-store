@@ -34,11 +34,12 @@ const Home =async  ()=>{
         }
     ]
 
-    let dataOutLimit:dataInOut = data.dataOutLimit?data.dataOutLimit:Error
+    let dataOutLimit :any= Array.isArray(data.dataOutLimit)?data.dataOutLimit:Object.values(data.dataOutLimit)?Object.values(data.dataOutLimit):Error
     let dataInputLimit :any= Array.isArray(data.dataInputLimit)?data.dataInputLimit:Object.values(data.dataInputLimit)?Object.values(data.dataInputLimit):Error
     let dataInput :dataInOut= data.dataInput?data.dataInput:Error
     let dataOut :dataInOut= data.dataOut?data.dataOut:Error
     let dataStore :dataStoryType= data.dataStore?data.dataStore:ErrorS
+
 
 
     return(
