@@ -38,6 +38,7 @@ const HandleEditOrder = (data:string|number|undefined,dataEdit:any,dataOrder:dat
     }
     // ----------------------------------------------
     const handleEditItem=()=>{
+
         const qtnInStoreItemOld = dataStore.find((e:storyObjType) => e?.item === dataEdit.data)?.qtn;
         const SHQtnInStoreItemOld :number=  qtnInStoreItemOld?qtnInStoreItemOld:0
         const qtnInStoreItemNew = dataStore.find((e:storyObjType) => e?.item === data)?.qtn;
@@ -45,18 +46,19 @@ const HandleEditOrder = (data:string|number|undefined,dataEdit:any,dataOrder:dat
         const updateArrayItems = replaceItemAtIndex(dataOrder.items, dataEdit.id, data);
         const qtnInOrder = dataOrder.qtn.find((e:any, index:number) => {return index == dataEdit.id})
         const SHQtnInOrder:number = qtnInOrder?qtnInOrder:0
+
         dataStore.forEach((e:any)=>{
             if(typeOrder == "output"){
                 e.item == dataEdit.data?
-                    updateData(`${coc}/Store/${e.id}`,{qtn:SHQtnInStoreItemOld+SHQtnInOrder}):
+                    updateData(`${coc}/Store/${e.id}`,{qtn:Number(SHQtnInStoreItemOld)+Number(SHQtnInOrder)}):
                     e.item == data ?
-                        updateData(`${coc}/Store/${e.id}`,{qtn:SHQtnInStoreItemNew-SHQtnInOrder}):
+                        updateData(`${coc}/Store/${e.id}`,{qtn:Number(SHQtnInStoreItemNew)-Number(SHQtnInOrder)}):
                         false
             }else if(typeOrder == "input"){
                 e.item == dataEdit.data?
-                    updateData(`${coc}/Store/${e.id}`,{qtn:SHQtnInStoreItemOld-SHQtnInOrder}):
+                    updateData(`${coc}/Store/${e.id}`,{qtn:Number(SHQtnInStoreItemOld)-Number(SHQtnInOrder)}):
                     e.item == data ?
-                        updateData(`${coc}/Store/${e.id}`,{qtn:SHQtnInStoreItemNew+SHQtnInOrder}):
+                        updateData(`${coc}/Store/${e.id}`,{qtn:Number(SHQtnInStoreItemNew)+Number(SHQtnInOrder)}):
                         false
             }
         })
@@ -75,7 +77,7 @@ const HandleEditOrder = (data:string|number|undefined,dataEdit:any,dataOrder:dat
         })
         const qtnInStoreItem = dataStore.find((e:storyObjType) => e?.item === ItemInOrder)?.qtn;
         const SHQtnInStoreItem :number= qtnInStoreItem?qtnInStoreItem:0
-        const newQtn:number = typeof data == 'number'?data:0
+        const newQtn:number = Number(data)
         const handleObjectQtn = ()=>{
             if(typeOrder == 'output'){
                 updateData(`${coc}/Input and output data/Output/${dataOrder.id}`, {qtn: updateArrayItems}).then(r  =>r)
