@@ -6,7 +6,7 @@ import {dataInOut, dataStoryType} from "@/app/type/typeDataFirebase";
 
 
 const OrderForItem =async ({params:{id}}:{params:{id:string[]}})=>{
-    const idOrder:string = id[0]
+    const idOrder:string = decodeURIComponent(id[0])
     const typeOrder :string= id[1]
     const coc:string|undefined = cookies().get('token')?.value
     const cookie:string = typeof coc == 'string'?coc:'no token'
