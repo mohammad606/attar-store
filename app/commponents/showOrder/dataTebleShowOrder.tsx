@@ -200,13 +200,11 @@ const DataTables = ({dataOrder,dataStore, coc,typeOrder,id}:
     }
 
 
-
-    const ItemSelect:string = id?.replace(/%20/g, ' ');
     let allOrder:dataInOut | []= []
     dataOrder?.forEach((e:data)=>{
         var arrayitem:items =[...e.items]
         arrayitem.forEach((f:string)=>{
-            if(f == ItemSelect ){
+            if(f == id ){
                 // @ts-ignore
                 allOrder.push(e)
             }
