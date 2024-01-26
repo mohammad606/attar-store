@@ -35,10 +35,11 @@ const Home =async  ()=>{
     ]
 
     let dataOutLimit:dataInOut = data.dataOutLimit?data.dataOutLimit:Error
-    let dataInputLimit :dataInOut= data.dataInputLimit?data.dataInputLimit:Error
+    let dataInputLimit :any= Array.isArray(data.dataInputLimit)?data.dataInputLimit:Object.values(data.dataInputLimit)?Object.values(data.dataInputLimit):Error
     let dataInput :dataInOut= data.dataInput?data.dataInput:Error
     let dataOut :dataInOut= data.dataOut?data.dataOut:Error
     let dataStore :dataStoryType= data.dataStore?data.dataStore:ErrorS
+
 
     return(
         <div className='h-full w-full flex flex-col flex-1'>
