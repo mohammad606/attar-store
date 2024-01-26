@@ -30,7 +30,6 @@ const ContenarClientEditPage = ({typeOrder,dataOrder,coc,dataStore}:
             id
         })
     }
-
     const filteredStory :storyObjType[]= removeUndStore?.filter(e =>!dataOrder.items.includes(e.item));
 
     return (
@@ -64,14 +63,14 @@ const ContenarClientEditPage = ({typeOrder,dataOrder,coc,dataStore}:
                                 <tbody className='flex flex-row'>
                                 <tr className='flex flex-col w-1/2 '>
                                     {items?.map((d:string,index:number)=>(
-                                        <td key={index} onClick={()=>handleShow(d,'item',items.indexOf(d))}
+                                        <td key={index} onClick={()=>handleShow(d,'item',index)}
                                             className='mb-2 border-b-2 pl-4  cursor-pointer hover:bg-[#374151] rounded-xl'>{d}</td>
                                     ))
                                     }
                                 </tr>
                                 <tr className='flex flex-col w-1/2'>
                                     {qtn?.map((f:number,index:number)=>(
-                                        <td key={index} onClick={()=>handleShow(f,'qtn',qtn.indexOf(f))}
+                                        <td key={index} onClick={()=>handleShow(f,'qtn',index)}
                                             className='mb-2 border-b-2 w-full text-center  cursor-pointer hover:bg-[#374151] rounded-xl'>{f}</td>
                                     ))
                                     }
